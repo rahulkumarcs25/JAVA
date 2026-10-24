@@ -8,7 +8,6 @@ abstract class EnergyResource {
         sourceName = name;
         energyGenerated = energy;
     }
-
     abstract double calculateEfficiency();
 
     void displayDetails() {
@@ -19,40 +18,29 @@ abstract class EnergyResource {
         System.out.println("---------------------------");
     }
 }
-
 class SolarEnergy extends EnergyResource {
-
     SolarEnergy(int id, String name, double energy) {
         super(id, name, energy);
     }
-
     @Override
     double calculateEfficiency() {
         return (energyGenerated / 5000) * 100;
     }
 }
-
 class WindEnergy extends EnergyResource {
-
     WindEnergy(int id, String name, double energy) {
         super(id, name, energy);
     }
-
     @Override
     double calculateEfficiency() {
         return (energyGenerated / 8000) * 100;
     }
 }
-
 public class energy {
     public static void main(String[] args) {
-
-        // Dynamic method dispatch
         EnergyResource resource;
-
         resource = new SolarEnergy(101, "Solar Energy", 4000);
         resource.displayDetails();
-
         resource = new WindEnergy(102, "Wind Energy", 6000);
         resource.displayDetails();
     }
